@@ -40,4 +40,5 @@ describe 'basic', ->
   it 'should handle plugin input errors', ->
     (-> accord('wow', { foo: 'bar' })).should.throw()
 
-
+  it 'should handle package not installed error', ->
+    (-> accord('stylus', { foo: 'bar' })).should.throw()

@@ -27,6 +27,6 @@
   "dependencies": {
     "map-stream": "^0.1.0",
     "gulp-util": "^2.2.14",
-    "accord": "0.0.6"
+    "accord": "0.0.7"
   }
 }

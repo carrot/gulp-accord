@@ -27,7 +27,17 @@ describe 'basic', ->
     stream.write(stub)
     stream.end()
 
-  it 'should handle compile errors'
-  it 'should handle plugin input errors'
+  it 'should handle accord compile errors', (done) ->
+    expect = 0
+    stub = stub_file('file.jade', "!= wow()")
+    stream = accord('jade', { pretty: true })
+
+    stream.on('error', -> done())
+
+    stream.write(stub)
+    stream.end()
+
+  it 'should handle plugin input errors', ->
+    (-> accord('wow', { foo: 'bar' })).should.throw()
 
 

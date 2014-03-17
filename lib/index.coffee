@@ -6,7 +6,12 @@ decoder       = new StringDecoder
 
 module.exports = (lang, opts) ->
 
+  if not accord.supports(lang)
+    throw new Error("gulp-accord: Language '#{lang}' not supported")
+
   map (file, cb) ->
     adapter = accord.load(lang)
+
     adapter.render(decoder.write(file.contents), opts)
-      .done ((res) -> cb(null, res)), cb
+      .done ((res) -> cb(null, res)), (err) ->
+        cb(new gutil.PluginError('gulp-accord', err))

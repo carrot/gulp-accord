@@ -4,6 +4,9 @@
   "author": "Carrot Creative <dev@carrotcreative.com>",
   "description": "a unified interface to compiled javascript languages",
   "license": "MIT",
+  "keywords": [
+    "gulpplugin"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/carrot/gulp-accord.git"

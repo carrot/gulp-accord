@@ -12,7 +12,28 @@ While you can certainly find one-off adapters for each of these languages, would
 
 ### Language Support
 
-Gulp-accord supports [these languages](https://github.com/jenius/accord#supported-languages) at the moment. If there are other languages you would like for accord to support, please make your suggestions and pull requests [to accord itself, not to this plugin](https://github.com/jenius/accord#adding-languages).
+Gulp-accord supports [these languages](https://github.com/jenius/accord#supported-languages) at the moment. Below you can find a usually-up-to-date adapter list:
+
+- [jade](http://jade-lang.com/)
+- [ejs](https://github.com/visionmedia/ejs)
+- [markdown](https://github.com/chjj/marked)
+- [mustache/hogan](https://github.com/twitter/hogan.js)
+- [handlebars](https://github.com/wycats/handlebars.js)
+- [haml](https://github.com/visionmedia/haml.js)
+- [stylus](http://learnboost.github.io/stylus/)
+- [scss](https://github.com/andrew/node-sass)
+- [less](https://github.com/less/less.js/)
+- [myth](https://github.com/segmentio/myth)
+- [coffeescript](http://coffeescript.org/)
+- [dogescript](https://github.com/remixz/dogescript)
+- [coco](https://github.com/satyr/coco)
+- [livescript](https://github.com/gkz/LiveScript)
+- [minify-js](https://github.com/mishoo/UglifyJS2)
+- [minify-css](https://github.com/GoalSmashers/clean-css)
+- [minify-html](https://github.com/kangax/html-minifier)
+- [csso](https://github.com/css/csso)
+
+If there are other languages you would like for accord to support, please make your suggestions and pull requests [to accord itself, not to this plugin](https://github.com/jenius/accord#adding-languages).
 
 ### Installation
 

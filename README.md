@@ -6,7 +6,7 @@ A fast, simple, and well-tested way to compile many languages with a unified int
 
 ### Why should you care?
 
-You're hip and modern, and you know that it makes life a lot easier to use compiled languages when you are writing html, css, and/or javascript. So many of your projects use tools like jade, stylus, sass, or coffeescript, and build them out to vanilla html, css, and javascript before deploys. It also just so happens that you use and love grunt as your build tool.
+You're hip and modern, and you know that it makes life a lot easier to use compiled languages when you are writing html, css, and/or javascript. So many of your projects use tools like jade, stylus, sass, or coffeescript, and build them out to vanilla html, css, and javascript before deploys. It also just so happens that you use and love gulp as your build tool.
 
 While you can certainly find one-off adapters for each of these languages, wouldn't it be easier if they all had a consistent, unified, and well-tested interface that always supports all options, and the latest version of the language? And wouldn't it be nice to just have to install a single gulp plugin to handle all of them? If you answered yes to any of the above, that is why you should care.
 

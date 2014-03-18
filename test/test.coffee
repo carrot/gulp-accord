@@ -17,7 +17,7 @@ describe 'basic', ->
     stream = accord('jade', { pretty: true })
 
     stream.on 'data', (data) ->
-      data.should.eql('\n<p>wow</p>\n<p>such test</p>')
+      data.should.eql(new Buffer('\n<p>wow</p>\n<p>such test</p>'))
       expect++
 
     stream.once 'end', ->

@@ -1,44 +1,42 @@
-should = require 'should'
-gutil = require 'gulp-util'
-accord = require '..'
+require('colors')
+should    = require 'should'
+gulp      = require 'gulp'
+accord    = require '..'
+fs        = require 'fs'
+path      = require 'path'
+glob      = require 'glob'
+W         = require 'when'
+node      = require 'when/node'
+test_path = path.join(__dirname, 'fixtures')
+run       = require('child_process').exec
+rimraf    = require('rimraf')
 
-stub_file = (name, contents) ->
-  new gutil.File
-    path: "./test/fixtures/#{name}"
-    cwd: './test'
-    base: './test/fixtures/'
-    contents: new Buffer(contents)
+# make sure all tests with deps have them installed
+before (done) ->
+  tasks = []
+  for d in glob.sync("#{test_path}/*/package.json")
+    p = path.dirname(d)
+    if fs.existsSync(path.join(p, 'node_modules')) then continue
+    console.log "  installing deps for '#{d.replace(__dirname,'').replace('package.json','')}'...".grey
+    tasks.push node.call(run, "cd #{p} && npm install")
+  W.all(tasks).then(-> done())
+  console.log('')
+
+# remove output
+after ->
+  rimraf.sync(out_dir) for out_dir in glob.sync('test/fixtures/**/out')
 
 describe 'basic', ->
 
   it 'should compile with options', (done) ->
-    expect = 0
-    stub = stub_file('file.jade', "p wow\np such test")
-    stream = accord('jade', { pretty: true })
+    p = path.join(test_path, 'basic')
+    node.call(run, "cd #{p} && gulp")
+      .catch(done)
+      .done ->
+        out = fs.readFileSync(path.join(p, 'out/test.jade'), 'utf8')
+        out.should.equal("\n<p>wow</p>\n<p>such testz</p>")
+        done()
 
-    stream.on 'data', (data) ->
-      data.should.eql(new Buffer('\n<p>wow</p>\n<p>such test</p>'))
-      expect++
-
-    stream.once 'end', ->
-      expect.should.equal(1)
-      done()
-
-    stream.write(stub)
-    stream.end()
-
-  it 'should handle accord compile errors', (done) ->
-    expect = 0
-    stub = stub_file('file.jade', "!= wow()")
-    stream = accord('jade', { pretty: true })
-
-    stream.on('error', -> done())
-
-    stream.write(stub)
-    stream.end()
-
-  it 'should handle plugin input errors', ->
-    (-> accord('wow', { foo: 'bar' })).should.throw()
-
-  it 'should handle package not installed error', ->
-    (-> accord('stylus', { foo: 'bar' })).should.throw()
+  it 'should handle accord compile errors'
+  it 'should handle plugin input errors'
+  it 'should handle package not installed error'

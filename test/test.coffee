@@ -37,6 +37,17 @@ describe 'basic', ->
         out.should.equal("\n<p>wow</p>\n<p>such testz</p>")
         done()
 
-  it 'should handle accord compile errors'
-  it 'should handle plugin input errors'
-  it 'should handle package not installed error'
+  it 'should handle accord compile errors', (done) ->
+    p = path.join(test_path, 'compile-error')
+    node.call(run, "cd #{p} && gulp")
+      .done(done, (-> done()))
+
+  it 'should handle plugin input errors', (done) ->
+    p = path.join(test_path, 'no-language-support')
+    node.call(run, "cd #{p} && gulp")
+      .done(done, (-> done()))
+
+  it 'should handle package not installed error', (done) ->
+    p = path.join(test_path, 'pkg-not-installed')
+    node.call(run, "cd #{p} && gulp")
+      .done(done, (-> done()))

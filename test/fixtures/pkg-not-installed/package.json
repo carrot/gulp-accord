@@ -1,0 +1,9 @@
+{
+  "name": "gulp-accord-test",
+  "version": "0.0.0",
+  "dependencies": {
+    "gulp": "3.x",
+    "coffee-script": "1.7.x",
+    "jade": "*"
+  }
+}

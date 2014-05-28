@@ -1,4 +1,7 @@
-# gulp-accord [![npm](https://badge.fury.io/js/gulp-accord.png)](http://badge.fury.io/js/gulp-accord) [![tests](https://travis-ci.org/carrot/gulp-accord.png?branch=master)](https://travis-ci.org/carrot/gulp-accord) [![dependencies](https://david-dm.org/carrot/gulp-accord.png)](https://david-dm.org/carrot/gulp-accord)
+gulp-accord
+-----------
+
+[![npm](http://img.shields.io/npm/v/gulp-accord.svg?style=flat)](https://badge.fury.io/js/gulp-accord) [![tests](http://img.shields.io/travis/carrot/gulp-accord/master.svg?style=flat)](https://travis-ci.org/carrot/gulp-accord) [![dependencies](http://img.shields.io/gemnasium/carrot/gulp-accord.svg?style=flat)](https://gemnasium.com/carrot/gulp-accord)
 
 A fast, simple, and well-tested way to compile many languages with a unified interface.
 

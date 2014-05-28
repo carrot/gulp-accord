@@ -14,11 +14,12 @@ rimraf    = require('rimraf')
 # make sure all tests with deps have them installed
 before (done) ->
   tasks = []
+  # i think glob.sync doesnt work
   for d in glob.sync("#{test_path}/*/package.json")
     p = path.dirname(d)
     if fs.existsSync(path.join(p, 'node_modules')) then continue
     console.log "  installing deps for '#{d.replace(__dirname,'').replace('package.json','')}'...".grey
-    tasks.push node.call(run, "cd #{p} && npm install")
+    tasks.push node.call(run, "npm install", { cwd: p })
   W.all(tasks).then(-> done())
   console.log('')
 

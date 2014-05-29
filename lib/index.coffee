@@ -14,7 +14,9 @@ module.exports = (lang, opts) ->
   # from the user-installed node_modules correctly.
   try adapter = accord.load(lang, path.join(module.parent.paths[0], lang))
   catch err
-    throw new Error("#{PLUGIN_NAME}: #{lang} not installed. Try 'npm i #{lang} -S'")
+    throw new Error(
+      "#{PLUGIN_NAME}: #{lang} not installed. Try 'npm i #{lang} -S'"
+    )
 
   # Return a mapped stream
   map (file, cb) ->

@@ -21,13 +21,15 @@
     "when": "^3.0.0",
     "glob": "4.x",
     "colors": "^0.6.2",
-    "rimraf": "^2.2.6"
+    "rimraf": "^2.2.6",
+    "coffeelint": "*"
   },
   "peerDependencies": {
     "gulp": "3.x"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "npm run lint && mocha",
+    "lint": "find lib/ -name '*.coffee' | xargs coffeelint"
   },
   "engines": {
     "node": ">=0.10.0"

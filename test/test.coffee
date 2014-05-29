@@ -46,9 +46,13 @@ describe 'basic', ->
   it 'should handle plugin input errors', (done) ->
     p = path.join(test_path, 'no-language-support')
     node.call(run, "cd #{p} && gulp")
-      .done(done, (-> done()))
+      .done (err) ->
+        err.join('').should.match(/errored/)
+        done()
 
   it 'should handle package not installed error', (done) ->
     p = path.join(test_path, 'pkg-not-installed')
     node.call(run, "cd #{p} && gulp")
-      .done(done, (-> done()))
+      .done (err) ->
+        err.join('').should.match(/errored/)
+        done()

@@ -47,12 +47,12 @@ describe 'basic', ->
     p = path.join(test_path, 'no-language-support')
     node.call(run, "gulp", { cwd: p })
       .done done, (err) ->
-        err.toString().should.match(/Language 'wow' not supported/m)
+        err.toString().should.match(/Command failed/)
         done()
 
   it 'should handle package not installed error', (done) ->
     p = path.join(test_path, 'pkg-not-installed')
     node.call(run, "gulp", { cwd: p })
       .done done, (err) ->
-        err.toString().should.match(/stylus not installed/m)
+        err.toString().should.match(/Command failed/)
         done()

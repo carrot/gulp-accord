@@ -4,6 +4,6 @@
   "dependencies": {
     "gulp": "3.x",
     "coffee-script": "1.7.x",
-    "jade": "*"
+    "jade": "1.x"
   }
 }

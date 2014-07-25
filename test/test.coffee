@@ -31,7 +31,7 @@ describe 'basic', ->
 
   it 'should compile with options', (done) ->
     p = path.join(test_path, 'basic')
-    node.call(run, "cd #{p} && gulp")
+    node.call(run, "gulp", { cwd: p })
       .catch(done)
       .done ->
         out = fs.readFileSync(path.join(p, 'out/test.jade'), 'utf8')
@@ -40,19 +40,19 @@ describe 'basic', ->
 
   it 'should handle accord compile errors', (done) ->
     p = path.join(test_path, 'compile-error')
-    node.call(run, "cd #{p} && gulp")
+    node.call(run, "gulp", { cwd: p })
       .done(done, (-> done()))
 
   it 'should handle plugin input errors', (done) ->
     p = path.join(test_path, 'no-language-support')
-    node.call(run, "cd #{p} && gulp")
-      .done (err) ->
-        err.join('').should.match(/errored/)
+    node.call(run, "gulp", { cwd: p })
+      .done done, (err) ->
+        err.toString().should.match(/Language 'wow' not supported/m)
         done()
 
   it 'should handle package not installed error', (done) ->
     p = path.join(test_path, 'pkg-not-installed')
-    node.call(run, "cd #{p} && gulp")
-      .done (err) ->
-        err.join('').should.match(/errored/)
+    node.call(run, "gulp", { cwd: p })
+      .done done, (err) ->
+        err.toString().should.match(/stylus not installed/m)
         done()

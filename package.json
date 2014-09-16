@@ -1,6 +1,6 @@
 {
   "name": "gulp-accord",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Carrot Creative <dev@carrotcreative.com>",
   "description": "a unified interface to compiled javascript languages",
   "license": "MIT",

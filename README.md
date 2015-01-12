@@ -23,6 +23,9 @@ Gulp-accord supports [these languages](https://github.com/jenius/accord#supporte
 - [mustache/hogan](https://github.com/twitter/hogan.js)
 - [handlebars](https://github.com/wycats/handlebars.js)
 - [haml](https://github.com/visionmedia/haml.js)
+- [swig](http://paularmstrong.github.io/swig)
+- [marc](https://github.com/bredele/marc)
+- [toffee](https://github.com/malgorithms/toffee)
 - [stylus](http://learnboost.github.io/stylus/)
 - [scss](https://github.com/andrew/node-sass)
 - [less](https://github.com/less/less.js/)
@@ -60,6 +63,24 @@ gulp.task('compile', function(){
 ```
 
 As you can probably infer from this example, the accord plugin takes two arguments, the **name** of the language you are compiling, and the **options** you want to pass to it. The name should be a string, and the options are optional, but if present, should be an object. You can find more information about the available options for each language [here](https://github.com/jenius/accord/tree/master/docs).
+
+### Source Maps
+
+If a language has support for source maps, this plugin will allow you to product them using [gulp's standard sourcemaps tool](https://github.com/floridoo/gulp-sourcemaps). You can use it as specified in the docs, and gulp-accord will produce the sourcemaps for you automatically. For example, the task shown below would compile a stylus file and produce an external sourcemap:
+
+```js
+var gulp = require('gulp'),
+    sourcemaps = require('gulp-sourcemaps'),
+    accord = require('gulp-accord');
+
+gulp.task('default', function(){
+  gulp.src('./test.styl')
+  .pipe(sourcemaps.init())
+  .pipe(accord('stylus'))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest('./out'))
+});
+```
 
 ### License & Contributing
 

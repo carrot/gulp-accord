@@ -24,6 +24,7 @@
     "chai-fs": "0.1.x",
     "coffee-script": "1.8.x",
     "coffeelint": "1.x",
+    "gulp": "3.x",
     "mocha": "2.x",
     "roots-util": "0.1.x",
     "when": "3.x"

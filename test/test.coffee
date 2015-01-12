@@ -8,7 +8,7 @@ util      = new Util.Helpers(base: test_path)
 
 # make sure all tests with deps have them installed
 before (done) ->
-  util.project.install_dependencies(test_path, done)
+  util.project.install_dependencies('*', done)
 
 # remove output
 after ->

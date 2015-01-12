@@ -1,31 +1,18 @@
-require('colors')
-should    = require 'should'
-gulp      = require 'gulp'
-accord    = require '..'
 fs        = require 'fs'
 path      = require 'path'
-glob      = require 'glob'
-W         = require 'when'
+Util      = require 'roots-util'
 node      = require 'when/node'
-test_path = path.join(__dirname, 'fixtures')
 run       = require('child_process').exec
-rimraf    = require('rimraf')
+test_path = path.join(__dirname, 'fixtures')
+util      = new Util.Helpers(base: test_path)
 
 # make sure all tests with deps have them installed
 before (done) ->
-  tasks = []
-  # i think glob.sync doesnt work
-  for d in glob.sync("#{test_path}/*/package.json")
-    p = path.dirname(d)
-    if fs.existsSync(path.join(p, 'node_modules')) then continue
-    console.log "  installing deps for '#{d.replace(__dirname,'').replace('package.json','')}'...".grey
-    tasks.push node.call(run, "npm install", { cwd: p })
-  W.all(tasks).then(-> done())
-  console.log('')
+  util.project.install_dependencies(test_path, done)
 
 # remove output
 after ->
-  rimraf.sync(out_dir) for out_dir in glob.sync('test/fixtures/**/out')
+  util.project.remove_folders('**/out')
 
 describe 'basic', ->
 
@@ -34,7 +21,7 @@ describe 'basic', ->
     node.call(run, "gulp", { cwd: p })
       .catch(done)
       .done ->
-        out = fs.readFileSync(path.join(p, 'out/test.jade'), 'utf8')
+        out = fs.readFileSync(path.join(p, 'out/test.html'), 'utf8')
         out.should.equal("\n<p>wow</p>\n<p>such testz</p>")
         done()
 
@@ -56,3 +43,12 @@ describe 'basic', ->
       .done done, (err) ->
         err.toString().should.match(/Command failed/)
         done()
+
+  it 'should render sourcemaps', (done) ->
+    p = path.join(test_path, 'sourcemaps')
+    node.call(run, "gulp", { cwd: p })
+      .done ->
+        path.join(p, 'out/test.css').should.be.a.file()
+        path.join(p, 'out/test.css.map').should.be.a.file()
+        done()
+      , done

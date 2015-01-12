@@ -13,20 +13,19 @@
   },
   "main": "lib",
   "dependencies": {
-    "map-stream": "0.1.x",
+    "accord": "0.14.x",
     "gulp-util": "3.x",
-    "accord": "0.12.x"
+    "map-stream": "0.1.x",
+    "replace-ext": "0.0.1",
+    "vinyl-sourcemaps-apply": "0.1.x"
   },
   "devDependencies": {
+    "chai": "1.x",
+    "chai-fs": "0.1.x",
     "coffee-script": "1.8.x",
     "coffeelint": "1.x",
-    "colors": "0.6.x",
-    "glob": "4.x",
-    "gulp": "3.x",
-    "jade": "1.x",
-    "mocha": "1.x",
-    "rimraf": "2.x",
-    "should": "4.x",
+    "mocha": "2.x",
+    "roots-util": "0.1.x",
     "when": "3.x"
   },
   "peerDependencies": {

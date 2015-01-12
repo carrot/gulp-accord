@@ -1,3 +1,4 @@
 --reporter spec
 --compilers coffee:coffee-script/register
 --timeout 100000
+--require test/support/index

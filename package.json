@@ -13,17 +13,17 @@
   },
   "main": "lib",
   "dependencies": {
-    "accord": "0.14.x",
+    "accord": "0.20.x",
     "gulp-util": "3.x",
     "map-stream": "0.1.x",
     "replace-ext": "0.0.1",
-    "vinyl-sourcemaps-apply": "0.1.x"
+    "vinyl-sourcemaps-apply": "0.2.x"
   },
   "devDependencies": {
-    "chai": "1.x",
-    "chai-fs": "0.1.x",
+    "chai": "3.x",
+    "chai-fs": "jenius/chai-fs",
     "coffee-coverage": "0.6.x",
-    "coffee-script": "1.8.x",
+    "coffee-script": "1.10.x",
     "coffeelint": "1.x",
     "gulp": "3.x",
     "istanbul": "0.3.x",

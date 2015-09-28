@@ -22,11 +22,16 @@
   "devDependencies": {
     "chai": "1.x",
     "chai-fs": "0.1.x",
+    "coffee-coverage": "0.6.x",
     "coffee-script": "1.8.x",
     "coffeelint": "1.x",
     "gulp": "3.x",
+    "istanbul": "0.3.x",
+    "jade": "1.x",
     "mocha": "2.x",
+    "rimraf": "2.x",
     "roots-util": "0.1.x",
+    "should": "4.x",
     "when": "3.x"
   },
   "peerDependencies": {
@@ -34,7 +39,8 @@
   },
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "find lib/ -name '*.coffee' | xargs coffeelint"
+    "lint": "./node_modules/.bin/coffeelint lib/*.coffee",
+    "coverage": "mocha && ./node_modules/.bin/istanbul report"
   },
   "engines": {
     "node": ">=0.10.0"
